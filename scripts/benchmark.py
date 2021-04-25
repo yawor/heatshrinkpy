@@ -1,7 +1,7 @@
 import os
 import time
 
-import heatshrink2
+import heatshrinkpy
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 PLAIN_FILE_PATH = os.path.join(DATA_DIR, 'plain_file.txt')
@@ -36,7 +36,7 @@ def run_benchmarks():
     print_block('Encode benchmarks')
 
     with open(PLAIN_FILE_PATH, 'rb') as plain_file:
-        with heatshrink2.open(COMPRESSED_FILE_PATH, 'wb') as compressed_file:
+        with heatshrinkpy.open(COMPRESSED_FILE_PATH, 'wb') as compressed_file:
             timed_write = timed(compressed_file.write)
 
             print('*** Writing 10,000 bytes ***')
@@ -51,7 +51,7 @@ def run_benchmarks():
 
     print_block('Decode benchmarks')
 
-    with heatshrink2.open(COMPRESSED_FILE_PATH, 'rb') as compressed_file:
+    with heatshrinkpy.open(COMPRESSED_FILE_PATH, 'rb') as compressed_file:
         timed_read = timed(compressed_file.read)
         print('*** Reading 10,000 bytes ***')
         timed_read(10000)
