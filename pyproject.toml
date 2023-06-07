@@ -2,13 +2,19 @@
 name = "heatshrinkpy"
 version = "0.11.0"
 description = "Pure Python heatshrink library, based on heatshrink2 library"
+# Poetry includes only the first author in the dist
+# as python metadata supports only a single author
 authors = [
+    "Marcin Jaworski <marcin@jaworski.me>",
     "Antonis Kalou <antonis@johan-sports.com>",
     "Erik Moqvist <erik.moqvist@gmail.com>",
-    "Marcin Jaworski <marcin@jaworski.me>",
 ]
 license = "ISC"
 readme = "README.rst"
+
+include = [
+    { path = "tests", format = "sdist" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
