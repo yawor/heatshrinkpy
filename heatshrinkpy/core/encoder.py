@@ -253,7 +253,7 @@ class Writer:
                 pos = self._search_index[pos]
                 continue
 
-            for ml in range(1, maxlen):
+            for ml in range(1, maxlen + 1):
                 if self._buffer[pos + ml] != self._buffer[end + ml]:
                     break
 
