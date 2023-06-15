@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "heatshrinkpy"
-version = "0.11.0"
+version = "0.11.1"
 description = "Pure Python heatshrink library, based on heatshrink2 library"
 # Poetry includes only the first author in the dist
 # as python metadata supports only a single author
