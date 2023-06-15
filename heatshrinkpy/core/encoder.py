@@ -254,7 +254,7 @@ class Writer:
                 continue
 
             for ml in range(1, maxlen + 1):
-                if self._buffer[pos + ml] != self._buffer[end + ml]:
+                if ml == maxlen or self._buffer[pos + ml] != self._buffer[end + ml]:
                     break
 
             if ml > match_maxlen:
