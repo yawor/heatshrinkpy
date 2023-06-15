@@ -23,6 +23,20 @@ importlib-metadata = { version = "^6.6.0", python = "<3.8" }
 [tool.poetry.scripts]
 heatshrinkpy = "heatshrinkpy:_main"
 
+[tool.poe.tasks._bump_version]
+cmd = "poetry version -s"
+
+[tool.poe.tasks.prepare-release]
+sequence = [
+    { cmd = "git add pyproject.toml" },
+    { cmd = "git commit -m \"v${VERSION}\"" },
+    { cmd = "git tag \"v${VERSION}\"" },
+]
+args = [
+    { name = "version", required = true, positional = true}
+]
+uses = { VERSION = "_bump_version -- ${version}" }
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
