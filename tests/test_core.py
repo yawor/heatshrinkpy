@@ -160,3 +160,9 @@ class CompressDecompressTest(TestUtilsMixin, unittest.TestCase):
             contents = random_string(size).encode('ascii')
             decompressed = heatshrink.decompress(heatshrink.compress(contents))
             self.assertEqual(decompressed, contents)
+
+    def test_with_all_zeros_longer_than_windows_size(self):
+        contents = b"\x00" * 8004
+        compressed = heatshrink.compress(contents, window_sz2=12, lookahead_sz2=4)
+        decompressed = heatshrink.decompress(compressed, window_sz2=12, lookahead_sz2=4)
+        self.assertEqual(contents, decompressed)
